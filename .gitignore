@@ -8,3 +8,6 @@ build/
 *.log
 prisma/migrations/
 coverage/
+
+# Local WhatsApp media (not for GitHub)
+whatsapp_media/
