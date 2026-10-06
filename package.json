@@ -1,0 +1,12 @@
+{
+  "name": "kpds-studio",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names \"web,api\" --prefix-colors \"cyan,magenta\" \"npm run dev --prefix web\" \"npm run start:dev --prefix backend\"",
+    "build": "npm run build --prefix web && npm run build --prefix backend",
+    "install:all": "npm install && npm install --prefix web && npm install --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
