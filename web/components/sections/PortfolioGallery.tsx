@@ -1,27 +1,38 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
 import PhotoView from '@/components/ui/PhotoView';
-import {
-  PORTFOLIO_PAGE_SIZE,
-  portfolioFilters,
-  type PortfolioFilter,
-  type PortfolioItem,
-} from '@/lib/content/portfolio';
-
-export type GalleryItem = PortfolioItem & { src: string | null };
+import { PORTFOLIO_PAGE_SIZE } from '@/lib/content/portfolio';
+import type { Category, MediaItem } from '@/lib/gallery/types';
 
 const LANES = 3;
 
-export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
-  const [filter, setFilter] = useState<PortfolioFilter>('All');
+type GalleryItem = MediaItem;
+
+/** Plays/shows one item; videos get their own element so they stop when the viewer moves on. */
+function Thumb({ item }: { item: GalleryItem }) {
+  if (item.type === 'video' && !item.poster) {
+    return <video className="photo" src={`${item.src}#t=0.1`} preload="metadata" muted playsInline aria-label={item.alt} />;
+  }
+  return (
+    <PhotoView
+      src={item.type === 'video' ? item.poster : item.src}
+      alt={item.alt}
+      position={item.pos}
+      sizes="(min-width:1024px) 33vw, 33vw"
+    />
+  );
+}
+
+export default function PortfolioGallery({ categories, items }: { categories: Category[]; items: GalleryItem[] }) {
+  const [filter, setFilter] = useState<string>('all');
   const [count, setCount] = useState(PORTFOLIO_PAGE_SIZE);
   const [open, setOpen] = useState<number | null>(null);
 
   const filtered = useMemo(
-    () => (filter === 'All' ? items : items.filter((i) => i.category === filter)),
-    [items, filter],
+    () => (filter === 'all' || !categories.some((c) => c.id === filter) ? items : items.filter((i) => i.categoryId === filter)),
+    [items, categories, filter],
   );
   const shown = filtered.slice(0, count);
 
@@ -32,7 +43,7 @@ export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
     return out;
   }, [shown]);
 
-  const choose = (f: PortfolioFilter) => {
+  const choose = (f: string) => {
     setFilter(f);
     setCount(PORTFOLIO_PAGE_SIZE);
     setOpen(null);
@@ -78,9 +89,12 @@ export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
   return (
     <>
       <div className="filters" role="group" aria-label="Filter portfolio by category">
-        {portfolioFilters.map((f) => (
-          <button key={f} type="button" className="chip" aria-pressed={filter === f} onClick={() => choose(f)}>
-            {f}
+        <button type="button" className="chip" aria-pressed={filter === 'all'} onClick={() => choose('all')}>
+          All
+        </button>
+        {categories.map((c) => (
+          <button key={c.id} type="button" className="chip" aria-pressed={filter === c.id} onClick={() => choose(c.id)}>
+            {c.name}
           </button>
         ))}
       </div>
@@ -94,7 +108,7 @@ export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
               <div className="lane" key={l}>
                 {lane.map(({ item, index }) => (
                   <button
-                    key={item.slot}
+                    key={item.id}
                     type="button"
                     className="tile"
                     style={
@@ -104,15 +118,14 @@ export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
                       } as React.CSSProperties
                     }
                     onClick={() => setOpen(index)}
-                    aria-label={`View photo: ${item.alt}`}
+                    aria-label={`${item.type === 'video' ? 'Play video' : 'View photo'}: ${item.alt}`}
                   >
-                    <PhotoView
-                      src={item.src}
-                      alt={item.alt}
-                      label={item.slot}
-                      position={item.pos}
-                      sizes="(min-width:1024px) 33vw, 33vw"
-                    />
+                    <Thumb item={item} />
+                    {item.type === 'video' && (
+                      <span className="tile__play" aria-hidden="true">
+                        <Play />
+                      </span>
+                    )}
                   </button>
                 ))}
               </div>
@@ -144,7 +157,20 @@ export default function PortfolioGallery({ items }: { items: GalleryItem[] }) {
           onTouchEnd={onTouchEnd}
         >
           <div className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
-            <PhotoView src={current.src} alt={current.alt} label={current.slot} sizes="100vw" eager position="50% 50%" />
+            {current.type === 'video' ? (
+              <video
+                key={current.id}
+                className="lightbox__video"
+                src={current.src}
+                poster={current.poster ?? undefined}
+                controls
+                autoPlay
+                playsInline
+                aria-label={current.alt}
+              />
+            ) : (
+              <PhotoView src={current.src} alt={current.alt} sizes="100vw" eager position="50% 50%" />
+            )}
           </div>
           <button type="button" className="lightbox__btn lightbox__close" onClick={close} aria-label="Close">
             <X />

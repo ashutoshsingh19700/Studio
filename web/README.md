@@ -25,6 +25,21 @@ npm run lint
 
 "Book a Session" buttons go to `/contact`. The Services cards pre-select the matching service in the form.
 
+## Admin panel (`/admin`)
+
+Sign in at `/admin` to manage the Portfolio page without touching code: add and remove **photos and videos**, create,
+rename, reorder and delete **categories** (they become the filter chips), edit a photo's description or move it to
+another category, and bulk select to move or delete. Changes appear on `/portfolio` immediately.
+
+1. Set `ADMIN_PASSWORD` (8+ characters) in `web/.env.local`, then restart the server. Changing it signs everyone out.
+2. Content lives in `data/gallery.json`, uploaded files in `data/uploads/` (both git-ignored; back them up). On first run
+   the gallery is seeded from `lib/content/portfolio.ts`, so the site looks the same until you edit it.
+3. Limits: photos (JPG/PNG/WebP/AVIF) 20 MB, videos (MP4/WebM/MOV) 120 MB. Files are checked by content, not file name.
+
+This stores plain files on disk, so it suits `next start` on your own server or VPS. Serverless hosts (Vercel, Netlify)
+have a read-only disk: swap `lib/gallery/store.ts` and `lib/gallery/media.ts` for a database and object storage.
+The Home and Services category pictures (`cat-*` slots) are still the file-based photo slots described below.
+
 ## Photos
 
 Every photo on the site is a named **slot**. Save a file with that name into `public/images/` and refresh. No code

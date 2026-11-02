@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Photo from '@/components/ui/Photo';
 import PortfolioGallery from '@/components/sections/PortfolioGallery';
-import { findImage } from '@/lib/images';
-import { portfolioItems } from '@/lib/content/portfolio';
+import { getPublicGallery } from '@/lib/gallery/store';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -10,9 +9,9 @@ export const metadata: Metadata = {
     'Real people, real stories. Browse weddings, portraits, products, events and fashion photography by KPDS Photo Studio.',
 };
 
-export default function PortfolioPage() {
-  // resolve photo URLs on the server, then hand plain data to the client gallery
-  const items = portfolioItems.map((item) => ({ ...item, src: findImage(item.slot) }));
+// Content is managed from /admin; saving there refreshes this page.
+export default async function PortfolioPage() {
+  const { categories, items } = await getPublicGallery();
 
   return (
     <>
@@ -28,7 +27,7 @@ export default function PortfolioPage() {
             <br />
             Real Stories.
           </h1>
-          <PortfolioGallery items={items} />
+          <PortfolioGallery categories={categories} items={items} />
         </div>
       </section>
     </>
