@@ -9,6 +9,8 @@ type PhotoViewProps = {
   sizes?: string;
   eager?: boolean;
   position?: string;
+  /** next/image quality (must be listed in next.config.ts `images.qualities`). Default 75. */
+  quality?: number;
 };
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -17,7 +19,7 @@ const isDev = process.env.NODE_ENV !== 'production';
  * Pure renderer (no fs access, safe in client components). Fills its nearest
  * positioned parent. See Photo.tsx for the server wrapper that resolves `src`.
  */
-export default function PhotoView({ src, alt, label, sizes = '100vw', eager = false, position }: PhotoViewProps) {
+export default function PhotoView({ src, alt, label, sizes = '100vw', eager = false, position, quality }: PhotoViewProps) {
   if (!src) {
     return (
       <div className="photo-empty" role="img" aria-label={alt}>
@@ -31,6 +33,7 @@ export default function PhotoView({ src, alt, label, sizes = '100vw', eager = fa
       src={src}
       alt={alt}
       fill
+      quality={quality}
       sizes={sizes}
       loading={eager ? 'eager' : 'lazy'}
       fetchPriority={eager ? 'high' : 'auto'}

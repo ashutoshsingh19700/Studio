@@ -21,6 +21,7 @@ function Thumb({ item }: { item: GalleryItem }) {
       alt={item.alt}
       position={item.pos}
       sizes="(min-width:1024px) 33vw, 33vw"
+      quality={85}
     />
   );
 }
@@ -169,7 +170,7 @@ export default function PortfolioGallery({ categories, items }: { categories: Ca
                 aria-label={current.alt}
               />
             ) : (
-              <PhotoView src={current.src} alt={current.alt} sizes="100vw" eager position="50% 50%" />
+              <PhotoView src={current.src} alt={current.alt} sizes="100vw" eager position="50% 50%" quality={90} />
             )}
           </div>
           <button type="button" className="lightbox__btn lightbox__close" onClick={close} aria-label="Close">

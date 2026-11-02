@@ -93,12 +93,12 @@ export async function probeVideo(file: File): Promise<{ ratio: number; poster: B
       let poster: Blob | null = null;
       if (w && h) {
         try {
-          const scale = Math.min(1, 720 / w);
+          const scale = Math.min(1, 1280 / w);
           const canvas = document.createElement('canvas');
           canvas.width = Math.round(w * scale);
           canvas.height = Math.round(h * scale);
           canvas.getContext('2d')!.drawImage(video, 0, 0, canvas.width, canvas.height);
-          poster = await new Promise<Blob | null>((r) => canvas.toBlob(r, 'image/jpeg', 0.82));
+          poster = await new Promise<Blob | null>((r) => canvas.toBlob(r, 'image/jpeg', 0.92));
         } catch {}
       }
       resolve({ ratio: w && h ? w / h : 1.78, poster });
