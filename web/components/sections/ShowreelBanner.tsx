@@ -8,7 +8,7 @@ export default function ShowreelBanner() {
   return (
     <section className="showreel" aria-label="Showreel">
       <div className="bg-photo bg-photo--left">
-        <Photo slot="home-showreel" alt="Rumi Darwaza in Lucknow glowing against the night sky" sizes="100vw" />
+        <Photo slot="home-showreel" alt="Rumi Darwaza in Lucknow glowing against the night sky" sizes="(min-width: 768px) 58vw, 100vw" />
       </div>
       <div className="showreel__shade" />
       <div className="container showreel__inner">
