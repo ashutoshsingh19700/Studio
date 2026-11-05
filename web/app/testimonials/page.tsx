@@ -17,7 +17,7 @@ const initials = (name: string) =>
 
 export const metadata: Metadata = {
   title: 'Testimonials',
-  description: 'Hear from the couples, families and brands who trusted KPDS Photo Studio with their stories.',
+  description: 'Hear from the couples, families and brands who trusted Amit Photography with their stories.',
 };
 
 export default function TestimonialsPage() {
@@ -33,7 +33,7 @@ export default function TestimonialsPage() {
           </h1>
           <p className="split__lead">
             Our clients&apos; trust motivates us. Here&apos;s what some of them have to say about their experience
-            with KPDS.
+            with Amit Photography.
           </p>
           <Link href="/contact" className="btn btn--peach">
             Share Your Experience <ArrowRight />

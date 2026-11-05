@@ -29,7 +29,7 @@ export const SLOTS = {
 
   // ── About ─────────────────────────────────────────────────────────────
   'about-hero': { size: '1500×1100', note: 'Photographer holding a camera to his eye, dark moody. Subject on the RIGHT' },
-  'about-team': { size: '1100×850', note: 'Group photo of the KPDS team' },
+  'about-team': { size: '1100×850', note: 'Group photo of the Amit Photography team' },
   'studio-main': { size: '1920×1100', note: 'Studio interior, warm lighting (used on About and the Studio page)' },
   'about-quote': { size: '1920×700', note: 'Dark close-up of hands / wedding ring, behind the quote' },
 

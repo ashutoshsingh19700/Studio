@@ -30,7 +30,7 @@ export default function ServicesBand() {
           {homeCategories.map((c, i) => (
             <Link key={c.label} href={c.href} className="svc-card" data-reveal style={{ '--d': `${i * 0.08}s` } as React.CSSProperties}>
               <div className="svc-card__img">
-                <Photo slot={c.slot} alt={`${c.label} photography by KPDS`} sizes="(min-width:1024px) 14vw, 22vw" position={c.pos} />
+                <Photo slot={c.slot} alt={`${c.label} photography by Amit Photography`} sizes="(min-width:1024px) 14vw, 22vw" position={c.pos} />
               </div>
               <div className="svc-card__label">
                 <span>{c.label}</span>

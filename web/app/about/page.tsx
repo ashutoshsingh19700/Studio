@@ -7,7 +7,7 @@ import Stats from '@/components/ui/Stats';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'KPDS Photo Studio is a team of photographers, filmmakers and creatives in Lucknow turning moments into timeless memories.',
+    'Amit Photography is a team of photographers, filmmakers and creatives in Lucknow turning moments into timeless memories.',
 };
 
 const stats = [
@@ -33,7 +33,7 @@ export default function AboutPage() {
             Just a Studio.
           </h1>
           <p className="page-hero__lead">
-            At KPDS, we believe photography is about people, emotions and stories. With a creative approach and
+            At Amit Photography, we believe photography is about people, emotions and stories. With a creative approach and
             professional expertise, we transform your moments into timeless memories.
           </p>
           <Stats items={stats} four />
@@ -46,7 +46,7 @@ export default function AboutPage() {
             <h2 id="people-title" className="serif">
               The People
               <br />
-              Behind KPDS
+              Behind Amit Photography
             </h2>
             <p>A team of photographers, filmmakers and creatives dedicated to capturing stories that inspire.</p>
             <Link href="/studio" className="btn btn--black">
@@ -54,14 +54,14 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className="people__img" data-reveal style={{ '--d': '0.1s' } as React.CSSProperties}>
-            <Photo slot="about-team" alt="The KPDS team in the studio" sizes="(min-width:1024px) 50vw, 45vw" />
+            <Photo slot="about-team" alt="The Amit Photography team in the studio" sizes="(min-width:1024px) 50vw, 45vw" />
           </div>
         </div>
       </section>
 
       <section className="studio-band" aria-labelledby="studio-title">
         <div className="bg-photo">
-          <Photo slot="studio-main" alt="The KPDS studio interior with warm lighting" sizes="100vw" />
+          <Photo slot="studio-main" alt="The Amit Photography studio interior with warm lighting" sizes="100vw" />
         </div>
         <div className="studio-band__shade" />
         <div className="container" data-reveal>

@@ -6,7 +6,7 @@ import { getPublicGallery } from '@/lib/gallery/store';
 export const metadata: Metadata = {
   title: 'Portfolio',
   description:
-    'Real people, real stories. Browse weddings, portraits, products, events and fashion photography by KPDS Photo Studio.',
+    'Real people, real stories. Browse weddings, portraits, products, events and fashion photography by Amit Photography.',
 };
 
 // Content is managed from /admin; saving there refreshes this page.

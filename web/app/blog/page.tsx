@@ -7,7 +7,7 @@ import { blogPosts } from '@/lib/content/blog';
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Photography tips, behind-the-scenes stories and the latest trends from the KPDS Photo Studio team.',
+    'Photography tips, behind-the-scenes stories and the latest trends from the Amit Photography team.',
 };
 
 export default function BlogPage() {

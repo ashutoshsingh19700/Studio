@@ -218,7 +218,7 @@ export default function AdminApp({ initial }: { initial: Gallery }) {
     <div className="a-shell">
       <header className="a-top">
         <div className="a-top__brand">
-          <span className="a-top__mark">KPDS</span>
+          <span className="a-top__mark">AMIT</span>
           <span className="a-top__label">Admin</span>
         </div>
         <div className="a-top__actions">

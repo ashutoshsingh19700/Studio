@@ -34,7 +34,7 @@ export default function StudioPage() {
     <>
       <section className="page-hero studio-hero" aria-labelledby="studio-title">
         <div className="bg-photo bg-photo--right">
-          <Photo slot="studio-main" alt="The KPDS studio interior" eager sizes="100vw" />
+          <Photo slot="studio-main" alt="The Amit Photography studio interior" eager sizes="100vw" />
         </div>
         <div className="page-hero__shade" />
         <div className="container">

@@ -7,7 +7,7 @@ import { additionalServices, services } from '@/lib/content/services';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Wedding, portrait, product, family, fashion and commercial photography, plus films, albums and retouching, from KPDS Photo Studio in Lucknow.',
+    'Wedding, portrait, product, family, fashion and commercial photography, plus films, albums and retouching, from Amit Photography in Lucknow.',
 };
 
 const addlIcons = {
@@ -50,7 +50,7 @@ export default function ServicesPage() {
                 data-reveal
                 style={{ '--d': `${(i % 3) * 0.08}s` } as React.CSSProperties}
               >
-                <Photo slot={s.slot} alt={`${s.title} by KPDS`} sizes="(min-width:1024px) 33vw, 50vw" position={s.pos} />
+                <Photo slot={s.slot} alt={`${s.title} by Amit Photography`} sizes="(min-width:1024px) 33vw, 50vw" position={s.pos} />
                 <span className="service-card__foot">
                   <span className="service-card__title">{s.title}</span>
                   <span className="arrow-circle" aria-hidden="true">

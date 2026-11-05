@@ -47,7 +47,7 @@ export default function ShowreelTrigger({ videoSrc, embedUrl, className, childre
             isOpen && (
               <iframe
                 src={embedUrl}
-                title="KPDS showreel"
+                title="Amit Photography showreel"
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
               />

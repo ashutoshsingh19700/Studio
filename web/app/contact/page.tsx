@@ -66,7 +66,7 @@ export default function ContactPage() {
         <div className="contact__map" data-reveal>
           <div className="map-card">
             <div className="map-card__img">
-              <Photo slot="contact-map" alt="Map showing the KPDS studio location" sizes="(min-width:1024px) 30vw, 90vw" />
+              <Photo slot="contact-map" alt="Map showing the Amit Photography studio location" sizes="(min-width:1024px) 30vw, 90vw" />
             </div>
             <div className="map-card__body">
               <h2>Visit Our Studio</h2>
