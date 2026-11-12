@@ -5,7 +5,7 @@ export const site = {
   url: 'https://kpdsstudio.com',
   phone: '+91 72330 54656',
   phoneHours: 'Mon - Sat, 10 AM - 7 PM',
-  email: 'hello@kpdsstudio.com',
+  email: 'amitkanojiya400@gmail.com',
   emailNote: 'We reply within 24 hours',
   city: 'Lucknow, India',
   addressLines: ['Amit Photography', 'Keshav Nagar, Fajullaganj, Sitapur Road', 'Lucknow, UP'],
